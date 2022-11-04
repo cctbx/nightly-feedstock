@@ -1,0 +1,25 @@
+diff --git a/modules/cctbx_project/libtbx/SConscript b/modules/cctbx_project/libtbx/SConscript
+index 9f06586b74..c8037162ca 100644
+--- a/modules/cctbx_project/libtbx/SConscript
++++ b/modules/cctbx_project/libtbx/SConscript
+@@ -797,10 +797,16 @@ int main() {
+       env_etc.shlinkflags_bpl = env_etc.shlinkflags
+       if sys.platform.startswith('darwin'):
+         env_etc.shlinkflags_bpl += ['-undefined', 'dynamic_lookup']
+-      libtbx.env.build_options.env_cxxflags = \
+-        libtbx.env.build_options.env_cxxflags.replace('c++14', 'c++11').replace('c++17', 'c++11')
+-      libtbx.env.build_options.env_cppflags = \
+-        libtbx.env.build_options.env_cppflags.replace('c++14', 'c++11').replace('c++17', 'c++11')
++      if sys.version_info.major == 3 and sys.version_info.minor == 11:  # switch to C++14 for Python 3.11
++        libtbx.env.build_options.env_cxxflags = \
++          libtbx.env.build_options.env_cxxflags.replace('c++11', 'c++14').replace('c++17', 'c++14')
++        libtbx.env.build_options.env_cppflags = \
++          libtbx.env.build_options.env_cppflags.replace('c++11', 'c++14').replace('c++17', 'c++14')
++      else:
++        libtbx.env.build_options.env_cxxflags = \
++          libtbx.env.build_options.env_cxxflags.replace('c++14', 'c++11').replace('c++17', 'c++11')
++        libtbx.env.build_options.env_cppflags = \
++          libtbx.env.build_options.env_cppflags.replace('c++14', 'c++11').replace('c++17', 'c++11')
+       env_etc.static_libraries = 0
+     else:
+       env_etc.ccflags_base = ["-fPIC", "-fno-strict-aliasing"] + \
