@@ -13,7 +13,7 @@ azure:
   store_build_artifacts: true
 build_platform:
   osx_arm64: osx_64
-test_on_native_only: true
-upload_on_branch: main
-# build_with_mambabuild: False
+conda_build:
+  zstd_compression_level: 22
 test: native
+upload_on_branch: main
