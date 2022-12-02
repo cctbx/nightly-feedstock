@@ -1,25 +1,40 @@
 diff --git a/modules/cctbx_project/libtbx/SConscript b/modules/cctbx_project/libtbx/SConscript
-index 9f06586b74..c8037162ca 100644
+index 9f06586b74..9f276e4cba 100644
 --- a/modules/cctbx_project/libtbx/SConscript
 +++ b/modules/cctbx_project/libtbx/SConscript
-@@ -797,10 +797,16 @@ int main() {
-       env_etc.shlinkflags_bpl = env_etc.shlinkflags
+@@ -798,9 +798,9 @@ int main() {
        if sys.platform.startswith('darwin'):
          env_etc.shlinkflags_bpl += ['-undefined', 'dynamic_lookup']
--      libtbx.env.build_options.env_cxxflags = \
+       libtbx.env.build_options.env_cxxflags = \
 -        libtbx.env.build_options.env_cxxflags.replace('c++14', 'c++11').replace('c++17', 'c++11')
--      libtbx.env.build_options.env_cppflags = \
++        libtbx.env.build_options.env_cxxflags.replace('c++11', 'c++14').replace('c++17', 'c++14')
+       libtbx.env.build_options.env_cppflags = \
 -        libtbx.env.build_options.env_cppflags.replace('c++14', 'c++11').replace('c++17', 'c++11')
-+      if sys.version_info.major == 3 and sys.version_info.minor == 11:  # switch to C++14 for Python 3.11
-+        libtbx.env.build_options.env_cxxflags = \
-+          libtbx.env.build_options.env_cxxflags.replace('c++11', 'c++14').replace('c++17', 'c++14')
-+        libtbx.env.build_options.env_cppflags = \
-+          libtbx.env.build_options.env_cppflags.replace('c++11', 'c++14').replace('c++17', 'c++14')
-+      else:
-+        libtbx.env.build_options.env_cxxflags = \
-+          libtbx.env.build_options.env_cxxflags.replace('c++14', 'c++11').replace('c++17', 'c++11')
-+        libtbx.env.build_options.env_cppflags = \
-+          libtbx.env.build_options.env_cppflags.replace('c++14', 'c++11').replace('c++17', 'c++11')
++        libtbx.env.build_options.env_cppflags.replace('c++11', 'c++14').replace('c++17', 'c++14')
        env_etc.static_libraries = 0
      else:
        env_etc.ccflags_base = ["-fPIC", "-fno-strict-aliasing"] + \
+@@ -1113,19 +1113,19 @@ if libtbx.env.build_options.enable_cxx11:
+     return t
+   if env_etc.compiler=='darwin_c++' and ver(env_etc.clang_version)>=ver((4,1)):
+     # version numbers are inconsisternt between Apple clang and original clang
+-    cxx11_flags = ["-std=c++11", "-stdlib=libc++",
++    cxx11_flags = ["-std=c++14", "-stdlib=libc++",
+                    "-mmacosx-version-min=%s" % min_macos]
+   elif ver(env_etc.clang_version)>=ver((3,1)):
+-    cxx11_flags = ["-std=c++11", "-stdlib=libc++",
++    cxx11_flags = ["-std=c++14", "-stdlib=libc++",
+                    "-mmacosx-version-min=%s" % min_macos]
+   elif ver(env_etc.gcc_version) >= ver((4,7)):
+-    cxx11_flags = ["-std=c++11"]
++    cxx11_flags = ["-std=c++14"]
+   elif ver(env_etc.gcc_version) >= ver((4,4)):
+     cxx11_flags = ["-std=c++0x"]
+   elif ver(env_etc.icc_version) >= ver((13,0)):
+     # intel compiler on Mac needs C++11 enabled gcc "-gxx-name=g++-mp-4.7"
+     # boost <=1.53 might need: "-D__GXX_EXPERIMENTAL_CPP0X__"
+-    cxx11_flags = ["-std=c++11"]
++    cxx11_flags = ["-std=c++14"]
+   elif ver(env_etc.icc_version) >= ver((10,0)):
+     cxx11_flags = ["-std=c++0x"]
+   elif env_etc.msvc_version and  env_etc.msvc_version >= 11 :
