@@ -13,7 +13,6 @@ source:
     - libann.patch
     - libtbx_osx-arm64.patch  # [build_platform != target_platform]
     - libtbx_SConscript.patch
-    - c++14.patch
 
 build:
   number: 1
