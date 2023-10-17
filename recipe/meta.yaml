@@ -33,7 +33,8 @@ requirements:
     - {{ cdt('libxxf86vm') }}  # [linux]
     - {{ cdt('libxext') }}     # [linux]
   host:
-    - boost
+    - boost =1.82  # [py>311]
+    - boost =1.78  # [py<312]
     - boost-cpp
     - eigen
     - future
