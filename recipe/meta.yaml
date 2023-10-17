@@ -34,8 +34,9 @@ requirements:
     - {{ cdt('libxext') }}     # [linux]
   host:
     - boost =1.82  # [py>311]
-    - boost =1.78  # [py<312]
-    - boost-cpp
+    - boost-cpp =1.82  # [py>311]
+    - boost  # [py<312]
+    - boost-cpp  # [py<312]
     - eigen
     - future
     - libglu  # [linux]
