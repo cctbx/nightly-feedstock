@@ -87,7 +87,7 @@ outputs:
       run:
         - {{ pin_subpackage('cctbx-base', max_pin="x.x.x") }}
         - ipython
-        - pyside2  # [x86_64 or arm64]
+        - pyside2  # [(x86_64 or arm64) and py<312]
         - python
         - pyzmq
         - qt-webengine  # [x86_64 or arm64]
