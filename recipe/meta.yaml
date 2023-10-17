@@ -53,7 +53,7 @@ outputs:
   - name: cctbx-base
     requirements:
       run:
-        - biopython
+        - biopython  # [py<312]
         - {{ pin_compatible('boost') }}
         - boost-cpp
         - future
