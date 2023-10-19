@@ -92,7 +92,7 @@ outputs:
         - pyside2  # [(x86_64 or arm64) and py<312]
         - python
         - pyzmq
-        - qt-webengine  # [x86_64 or arm64]
+        - qt-webengine  # [(x86_64 or arm64) and py<312]
         - websockets
         - wxpython  # [(x86_64 or arm64) and py<312]
     test:
