@@ -1,17 +1,13 @@
-github:
-  user_or_org: cctbx
-  repo_name: nightly-feedstock
-  branch_name: main
-  tooling_branch_name: main
-channels:
-  targets:
-    - [cctbx-nightly, main]
-
 azure:
   user_or_org: cctbx-release
   project_name: feedstock-builds
   store_build_artifacts: false
 build_platform:
   osx_arm64: osx_64
+github:
+  user_or_org: cctbx
+  repo_name: nightly-feedstock
+  branch_name: main
+  tooling_branch_name: main
 test: native
 upload_on_branch: main
