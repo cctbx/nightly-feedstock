@@ -51,7 +51,7 @@ outputs:
   - name: cctbx-base
     requirements:
       run:
-        - biopython  # [py<312]
+        - biopython
         - future
         - {{ pin_compatible('libglu') }}  # [linux]
         - libsvm
