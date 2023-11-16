@@ -1,9 +1,5 @@
 MACOSX_DEPLOYMENT_TARGET:
 - '11.0'
-boost:
-- 1.78.0
-boost_cpp:
-- 1.78.0
 c_compiler:
 - clang
 c_compiler_version:
@@ -16,6 +12,10 @@ cxx_compiler:
 - clangxx
 cxx_compiler_version:
 - '16'
+libboost_devel:
+- '1.82'
+libboost_python_devel:
+- '1.82'
 libsvm:
 - '332'
 macos_machine:
@@ -23,10 +23,6 @@ macos_machine:
 numpy:
 - '1.22'
 pin_run_as_build:
-  boost:
-    max_pin: x.x.x
-  boost-cpp:
-    max_pin: x.x.x
   libsvm:
     max_pin: x
   python:
