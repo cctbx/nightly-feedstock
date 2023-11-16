@@ -33,8 +33,10 @@ requirements:
     - {{ cdt('libxxf86vm') }}  # [linux]
     - {{ cdt('libxext') }}     # [linux]
   host:
-    - libboost-python-devel
-    - libboost-devel
+    - boost =1.78             # [py<38]
+    - boost-cpp =1.78         # [py<38]
+    - libboost-python-devel   # [py>37]
+    - libboost-devel          # [py>37]
     - eigen
     - future
     - libglu  # [linux]
