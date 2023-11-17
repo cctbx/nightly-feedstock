@@ -53,6 +53,8 @@ outputs:
   - name: cctbx-base
     requirements:
       run:
+        - boost =1.78             # [py<38]
+        - boost-cpp =1.78         # [py<38]
         - biopython
         - future
         - {{ pin_compatible('libglu') }}  # [linux]
