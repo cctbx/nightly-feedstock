@@ -46,8 +46,10 @@ requirements:
     - python
     - python.app  # [osx]
     - scons
+    - setuptools =69.0  # [py==37]
     - setuptools
     - six
+    - wheel =0.42  # [py==37]
     - xorg-libxfixes  # [linux]
 
 outputs:
