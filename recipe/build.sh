@@ -23,6 +23,10 @@ rm -fr ./modules/scons
 # remove some libtbx_refresh.py files
 rm -fr ./modules/dxtbx/libtbx_refresh.py
 
+# use debug flags
+export CFLAGS=${DEBUG_CFLAGS}
+export CXXFLAGS=${DEBUG_CXXFLAGS}
+
 # build
 export CCTBX_SKIP_CHEMDATA_CACHE_REBUILD=1
 ${PYTHON} bootstrap.py build \
