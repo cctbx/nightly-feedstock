@@ -38,8 +38,10 @@ outputs:
         - {{ cdt('mesa-libgl-devel') }}         # [linux]
         - {{ cdt('mesa-dri-drivers') }}         # [linux]
       host:
-        - libboost-python-devel
-        - libboost-devel
+        - boost =1.78             # [py<38]
+        - boost-cpp =1.78         # [py<38]
+        - libboost-python-devel   # [py>37]
+        - libboost-devel          # [py>37]
         - eigen
         - future
         - libglu          # [linux]
@@ -51,7 +53,13 @@ outputs:
         - setuptools
         - six
         - xorg-libxfixes  # [linux]
+        - libxcrypt  # [linux and py==37]
+        - setuptools =69.0  # [py==37]
+        - wheel =0.42  # [py==37]
       run:
+        - boost =1.78             # [py<38]
+        - boost-cpp =1.78         # [py<38]
+        - {{ pin_compatible('numpy') }}  # [py<38]
         - biopython
         - future
         - {{ pin_compatible('libglu') }}  # [linux]
