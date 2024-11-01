@@ -52,7 +52,7 @@ outputs:
         - six
         - xorg-libxfixes  # [linux]
       run:
-        - biopython
+        - biopython  # [py<313]
         - future
         - {{ pin_compatible('libglu') }}  # [linux]
         - libsvm
@@ -90,9 +90,9 @@ outputs:
         - pyopengl  # [win]
         - python
         - pyzmq
-        - qt-webengine  # [x86_64 or arm64]
+        - qt-webengine  # [(x86_64 or arm64) and py<312]
         - websockets
-        - wxpython  # [x86_64 or arm64]
+        - wxpython  # [(x86_64 or arm64) and py<313]
     test:
       imports:
         - scitbx.array_family.flex
@@ -101,12 +101,11 @@ outputs:
       commands:
         - libtbx.show_commands
         - pip check
-        - libtbx.python -c "import wx; wx.App()"  # [not linux]
+        - libtbx.python -c "import wx; wx.App()"  # [not linux and py<313]
         - mkdir test; cd test; libtbx.run_tests_parallel module=cctbx module=libtbx module=scitbx nproc=4  # [not win]
         - mkdir test && cd test && libtbx.run_tests_parallel module=cctbx module=libtbx module=scitbx nproc=4  # [win]
       requires:
         - pip
-        - wxwidgets =3.2.5
 
 about:
   home: https://github.com/cctbx/cctbx_project
