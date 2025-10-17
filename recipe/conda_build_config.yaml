@@ -1,9 +1,5 @@
 channel_targets:
   - cctbx-nightly main
-c_compiler_version:
-  - '13' #  [linux]
-cxx_compiler_version:
-  - '13' #  [linux]
 python:
   # part of a zip_keys: python, is_python_min
   - 3.9.* *_cpython
