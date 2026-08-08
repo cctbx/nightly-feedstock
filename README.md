@@ -240,31 +240,73 @@ conda config --add channels cctbx-nightly
 conda config --set channel_priority strict
 ```
 
-Once the `cctbx-nightly` channel has been enabled, `cctbx, cctbx-base` can be installed with `conda`:
+How to use
+----------
+
+<details>
+<summary>With conda</summary>
 
 ```
 conda install cctbx cctbx-base
 ```
 
-or with `mamba`:
+</details>
+
+<details>
+<summary>With mamba</summary>
 
 ```
 mamba install cctbx cctbx-base
 ```
 
-It is possible to list all of the versions of `cctbx` available on your platform with `conda`:
+</details>
+
+<details>
+<summary>With pixi</summary>
+
+```
+# for adding to your local project
+pixi add cctbx cctbx-base
+# for installing globally
+pixi global install cctbx cctbx-base
+```
+
+</details>
+
+Search package versions
+-----------------------
+
+It is possible to list all of the versions of `cctbx` available on your platform:
+
+<details>
+<summary>With conda</summary>
 
 ```
 conda search cctbx --channel cctbx-nightly
 ```
 
-or with `mamba`:
+</details>
+
+<details>
+<summary>With mamba</summary>
 
 ```
 mamba search cctbx --channel cctbx-nightly
 ```
 
-Alternatively, `mamba repoquery` may provide more information:
+</details>
+
+<details>
+<summary>With pixi</summary>
+
+```
+pixi search cctbx --channel cctbx-nightly
+```
+
+</details>
+
+<details>
+<summary>With mamba repoquery, which may provide more information</summary>
 
 ```
 # Search all versions available on your platform:
@@ -276,6 +318,8 @@ mamba repoquery whoneeds cctbx --channel cctbx-nightly
 # List dependencies of `cctbx`:
 mamba repoquery depends cctbx --channel cctbx-nightly
 ```
+
+</details>
 
 
 
