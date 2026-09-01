@@ -1,2 +1,6 @@
 channel_targets:
   - cctbx-nightly main
+c_compiler_version:  # [osx]
+  - '19'  # [osx]
+cxx_compiler_version:  # [osx]
+  - '19'  # [osx]
