@@ -74,6 +74,7 @@ outputs:
         - mkdir test; cd test; libtbx.run_tests_parallel module=cctbx module=libtbx module=scitbx nproc=4  # [not win]
         - mkdir test && cd test && libtbx.run_tests_parallel module=cctbx module=libtbx module=scitbx nproc=4  # [win]
       requires:
+        - git
         - pip
 
   - name: cctbx
@@ -102,6 +103,7 @@ outputs:
         - mkdir test; cd test; libtbx.run_tests_parallel module=cctbx module=libtbx module=scitbx nproc=4  # [not win]
         - mkdir test && cd test && libtbx.run_tests_parallel module=cctbx module=libtbx module=scitbx nproc=4  # [win]
       requires:
+        - git
         - pip
 
 about:
