@@ -41,7 +41,7 @@ def run():
   parser.add_argument('--new-version', default=None, type=str,
     help='The version of the artifact')
   parser.add_argument('--meta-path', default=None, type=str,
-    help='The path to meta.yaml')
+    help='The path to recipe.yaml')
 
   # show help if no arguments are provided
   if len(sys.argv) == 1:
@@ -82,30 +82,35 @@ def run():
   if raw_url is not None:
     file_url = urlsplit(raw_url)
     new_url = list(file_url)
-    new_url[3] = 'format=file&subPath=%2Fcctbx-{{ version }}.tar.gz'
+    new_url[3] = 'format=file&subPath=%2Fcctbx-${{ version }}.tar.gz'
     unix_url = urlunsplit(new_url)
     # Windows does not like the %2F
-    new_url[3] = 'format=file&subPath=/cctbx-{{ version }}.tar.gz'
+    new_url[3] = 'format=file&subPath=/cctbx-${{ version }}.tar.gz'
     win_url = urlunsplit(new_url)
 
-  # modify meta.yaml to use new version and URL
+  # modify the context section of recipe.yaml to use new version and URLs
   if (namespace.new_version is not None
       and unix_url is not None
       and win_url is not None):
     with open(namespace.meta_path, 'r') as f:
       lines = f.readlines()
+    replacements = {
+      'version': f'  version: "{namespace.new_version}"\n',
+      'unix_url': f'  unix_url: {unix_url}\n',
+      'win_url': f'  win_url: {win_url}\n',
+    }
+    in_context = False
     for i, line in enumerate(lines):
-      if i == 0:
+      # top-level keys delimit the context section
+      if not line.startswith((' ', '#', '\n')):
+        in_context = line.startswith('context:')
+        continue
+      if not in_context:
+        continue
+      key = line.strip().split(':', 1)[0]
+      if key in replacements:
         print('Old: ', line)
-        lines[i] = r'{% set version = "' + namespace.new_version + r'" %}' + '\n'
-        print('New: ', lines[i])
-      if line.startswith('  url:') and line.endswith('[unix]\n'):
-        print('Old: ', line)
-        lines[i] = f'  url: {unix_url}  # [unix]\n'
-        print('New: ', lines[i])
-      if line.startswith('  url:') and line.endswith('[win]\n'):
-        print('Old: ', line)
-        lines[i] = f'  url: {win_url}  # [win]\n'
+        lines[i] = replacements[key]
         print('New: ', lines[i])
     with open(namespace.meta_path, 'w') as f:
       for line in lines:
