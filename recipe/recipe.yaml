@@ -98,9 +98,6 @@ outputs:
             then:
               - call libtbx.show_commands
               - mkdir test && cd test && call libtbx.run_tests_parallel module=cctbx module=libtbx module=scitbx nproc=4
-        requirements:
-          run:
-            - git
 
   - package:
       name: cctbx
@@ -110,7 +107,7 @@ outputs:
       run:
         - ${{ pin_subpackage('cctbx-base', upper_bound='x.x.x') }}
         - ipython
-        - if: (x86_64 or arm64) and match(python, "<3.12")
+        - if: (x86_64 or arm64 or aarch64) and match(python, "<3.14")
           then:
             - pyside2
             - qt-webengine
@@ -119,7 +116,7 @@ outputs:
         - python
         - pyzmq
         - websockets
-        - if: x86_64 or arm64
+        - if: x86_64 or arm64 or aarch64
           then: wxpython
     tests:
       - python:
@@ -140,9 +137,6 @@ outputs:
             then: mkdir test; cd test; libtbx.run_tests_parallel module=cctbx module=libtbx module=scitbx nproc=4
           - if: win
             then: mkdir test && cd test && call libtbx.run_tests_parallel module=cctbx module=libtbx module=scitbx nproc=4
-        requirements:
-          run:
-            - git
 
 about:
   homepage: https://github.com/cctbx/cctbx_project

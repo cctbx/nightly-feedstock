@@ -25,11 +25,6 @@ rm -fr ./modules/scons
 # remove some libtbx_refresh.py files
 rm -fr ./modules/dxtbx/libtbx_refresh.py
 
-# remove the guided_coding test (fails on Linux and macOS)
-sed -i.bak 's/"$D\/tst_guided_coding.py"/#"$D\/tst_guided_coding.py"/' ./modules/cctbx_project/libtbx/run_tests.py
-rm -f ./modules/cctbx_project/libtbx/run_tests.py.bak
-rm -f ./modules/cctbx_project/libtbx/tst_guided_coding.py
-
 # build
 export CCTBX_SKIP_CHEMDATA_CACHE_REBUILD=1
 ${PYTHON} bootstrap.py build \
@@ -42,7 +37,7 @@ ${PYTHON} bootstrap.py build \
   --config-flags="--no_bin_python" \
   --config-flags="--skip_phenix_dispatchers"
 cd build
-./bin/libtbx.configure cma_es crys3d fable rstbx serialtbx spotinder
+./bin/libtbx.configure cma_es crys3d fable rstbx serialtbx spotfinder
 ./bin/libtbx.scons -j ${CPU_COUNT}
 ./bin/libtbx.scons -j ${CPU_COUNT}
 cd ..
