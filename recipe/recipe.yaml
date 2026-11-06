@@ -1,10 +1,10 @@
 schema_version: 1
 
 context:
-  version: "2026.11a4"
+  version: "2026.11a6"
   # Windows does not like the %2F in the subPath
-  unix_url: https://artprodcus3.artifacts.visualstudio.com/Ae7d56bcd-6398-4fef-808d-577536b26a95/67feccdf-8c7f-4afe-8ff5-f21e77cdbf9d/_apis/artifact/cGlwZWxpbmVhcnRpZmFjdDovL2NjdGJ4LXJlbGVhc2UvcHJvamVjdElkLzY3ZmVjY2RmLThjN2YtNGFmZS04ZmY1LWYyMWU3N2NkYmY5ZC9idWlsZElkLzIwOTUwL2FydGlmYWN0TmFtZS9jY3RieC0yMDI2LjExYTQ1/content?format=file&subPath=%2Fcctbx-${{ version }}.tar.gz
-  win_url: https://artprodcus3.artifacts.visualstudio.com/Ae7d56bcd-6398-4fef-808d-577536b26a95/67feccdf-8c7f-4afe-8ff5-f21e77cdbf9d/_apis/artifact/cGlwZWxpbmVhcnRpZmFjdDovL2NjdGJ4LXJlbGVhc2UvcHJvamVjdElkLzY3ZmVjY2RmLThjN2YtNGFmZS04ZmY1LWYyMWU3N2NkYmY5ZC9idWlsZElkLzIwOTUwL2FydGlmYWN0TmFtZS9jY3RieC0yMDI2LjExYTQ1/content?format=file&subPath=/cctbx-${{ version }}.tar.gz
+  unix_url: https://artprodcus3.artifacts.visualstudio.com/Ae7d56bcd-6398-4fef-808d-577536b26a95/67feccdf-8c7f-4afe-8ff5-f21e77cdbf9d/_apis/artifact/cGlwZWxpbmVhcnRpZmFjdDovL2NjdGJ4LXJlbGVhc2UvcHJvamVjdElkLzY3ZmVjY2RmLThjN2YtNGFmZS04ZmY1LWYyMWU3N2NkYmY5ZC9idWlsZElkLzIwOTY4L2FydGlmYWN0TmFtZS9jY3RieC0yMDI2LjExYTY1/content?format=file&subPath=%2Fcctbx-${{ version }}.tar.gz
+  win_url: https://artprodcus3.artifacts.visualstudio.com/Ae7d56bcd-6398-4fef-808d-577536b26a95/67feccdf-8c7f-4afe-8ff5-f21e77cdbf9d/_apis/artifact/cGlwZWxpbmVhcnRpZmFjdDovL2NjdGJ4LXJlbGVhc2UvcHJvamVjdElkLzY3ZmVjY2RmLThjN2YtNGFmZS04ZmY1LWYyMWU3N2NkYmY5ZC9idWlsZElkLzIwOTY4L2FydGlmYWN0TmFtZS9jY3RieC0yMDI2LjExYTY1/content?format=file&subPath=/cctbx-${{ version }}.tar.gz
 
 recipe:
   name: cctbx-split
